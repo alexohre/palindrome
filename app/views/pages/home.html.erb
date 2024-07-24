@@ -1,0 +1,128 @@
+<!-- Header-->
+<header class="bg-dark py-5">
+	<div class="container px-5">
+		<div class="row gx-5 justify-content-center">
+			<div class="col-lg-6">
+				<div class="text-center my-5">
+					<h1 class="display-5 fw-bolder text-white mb-2">🔄 Palindrome Magic: Unveil the Hidden Palindromes! 🔄</h1>
+					<p class="lead text-white-50 mb-4">Welcome to the Palindrome Magic Checker! Enter any sentence below, and we'll reveal all the palindromes hidden within. Whether it's a single word or a complex sentence, our magic checker will find it for you!</p>
+					<div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+						<a class="btn btn-primary btn-lg px-4 me-sm-3" href="#checker">Get Started</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- Pricing section-->
+<section class="bg-light py-5 border-bottom" id="checker">
+	<div class="container px-5 my-5">
+		<div class="text-center mb-5">
+			<h2 class="fw-bolder">The Palindrome Magic</h2>
+		</div>
+		<div class="row gx-5 justify-content-center">
+			<!-- Pricing card free-->
+			<div class="col-lg-6 ">
+				<div class="card mb-5 mb-xl-0">
+					<div class="card-body p-5">
+						<div class="mb-3">
+							<%= form_with url: checker_path, local: true do |form| %>
+								<div class="mb-3">
+									<%= form.label :text, "Enter a word or sentence", class: "mb-2" %>
+									<%= form.text_area :text, class: "form-control", rows: 5 %>
+								</div>
+								<div>
+									<%= form.submit "Check", class: "btn btn-primary" %>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Pricing card pro-->
+			<div class="col-lg-6 ">
+				<div class="card mb-5 mb-xl-0">
+					<div class="card-body p-5">
+						<% if @text.present? %>
+							<h2>✨ Result ✨</h2>
+							<% if @palindromes.any? %>
+								<p>The following palindromes were found in your sentence:</p>
+								<ul>
+									<% @palindromes.each do |palindrome| %>
+										<li><%= palindrome %></li>
+									<% end %>
+								</ul>
+							<% else %>
+								<p>No palindromes found in your sentence.</p>
+							<% end %>
+							<% if @non_palindromes.any? %>
+								<hr>
+								<p>The following words are not palindromes:</p>
+								<ul>
+									<% @non_palindromes.each do |non_palindrome| %>
+										<li><%= non_palindrome %></li>
+									<% end %>
+								</ul>
+							<% end %>
+						<% else %>
+							<div class="text-center">
+								<%= image_tag("checker.jpeg", width: 400) %>
+							</div>
+							<div class="mt-2 justify-content-center text-center">
+								This Palindrome Checker prints out the palindromes and the non palindromes 
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<%# <!-- Testimonials section-->
+<section class="py-5 border-bottom">
+	<div class="container px-5 my-5 px-5">
+		<div class="text-center mb-5">
+			<h2 class="fw-bolder">Customer testimonials</h2>
+			<p class="lead mb-0">Our customers love working with us</p>
+		</div>
+		<div class="row gx-5 justify-content-center">
+			<div class="col-lg-6">
+				<!-- Testimonial 1-->
+				<div class="card mb-4">
+					<div class="card-body p-4">
+						<div class="d-flex">
+							<div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
+							<div class="ms-4">
+								<p class="mb-1">Thank you for putting together such a great product. We loved working with you and the whole team, and we will be recommending you to others!</p>
+								<div class="small text-muted">- Client Name, Location</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Testimonial 2-->
+				<div class="card">
+					<div class="card-body p-4">
+						<div class="d-flex">
+							<div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
+							<div class="ms-4">
+								<p class="mb-1">The whole team was a huge help with putting things together for our company and brand. We will be hiring them again in the near future for additional work!</p>
+								<div class="small text-muted">- Client Name, Location</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section> %>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+	<div class="container px-5">
+		<p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+	</div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+</body>
+</html>
